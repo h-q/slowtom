@@ -3,7 +3,7 @@ slowtom_sf:
   name: "slowtom-sf"
   hasHealthcheck: "true"
   isResilient: "false"
-  replicaCount: 1
+  replicaCount: 2
   aspect_values:
     - name: y_aspect
       value: "storefront"
