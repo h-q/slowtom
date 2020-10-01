@@ -3,12 +3,14 @@ Helm 2 Charts for <a href="https://hub.docker.com/r/hqasem/slow-tomcat" target="
 
 ### Helm2 Install
 ```
-helm install --debug --dry-run helm-chart/slowtom --name slowtom -f helm-chart/slowtom/environments/initial.yaml
+helm install https://github.com/h-q/slowtom/raw/master/docs/slowtom.tgz --name slowtom \
+     -f https://raw.githubusercontent.com/h-q/slowtom/master/docs/slowtom/environments/initial.yaml
 ```
 
 ### Helm2 Upgrade
 ```
-helm upgrade --debug --dry-run slowtom helm-chart/slowtom -f helm-chart/slowtom/environments/upgrade.yaml
+helm upgrade --debug --dry-run slowtom https://github.com/h-q/slowtom/raw/master/docs/slowtom.tgz \
+     -f https://raw.githubusercontent.com/h-q/slowtom/master/docs/slowtom/environments/initial.yaml
 ```
 
 ### Helm2 Delete
