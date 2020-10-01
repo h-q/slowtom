@@ -1,0 +1,23 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: {{.Values.slowtom_sf.name}} 
+  labels:
+    chart: "{{ .Chart.Name | trunc 63 }}"
+    chartVersion: "{{ .Chart.Version | trunc 63 }}"
+    app: {{.Values.slowtom_sf.name}}
+    visualize: "true" 
+    hasHealthcheck: "{{ .Values.slowtom_sf.hasHealthcheck }}" 
+    isResilient: "{{ .Values.slowtom_sf.isResilient }}"
+spec:
+  type: NodePort
+  selector:
+    app: {{.Values.slowtom_sf.name}}
+  sessionAffinity: ClientIP
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+      name: http
+      nodePort: 30901
+---

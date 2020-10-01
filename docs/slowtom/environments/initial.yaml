@@ -1,0 +1,17 @@
+# Storefront
+slowtom_sf:
+  name: "slowtom-sf"
+  hasHealthcheck: "true"
+  isResilient: "false"
+  replicaCount: 1
+  aspect_values:
+    - name: y_aspect
+      value: "storefront"
+
+image:
+  repository: hqasem/slow-tomcat
+  pullPolicy: IfNotPresent
+  tag: 1
+env:
+  - name: y_env
+    value: whatever

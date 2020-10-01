@@ -1,0 +1,38 @@
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ .Values.slowtom_sf.name }} 
+  labels:
+    chart: "{{ .Chart.Name | trunc 63 }}"
+    chartVersion: "{{ .Chart.Version | trunc 63 }}" 
+    visualize: "true" 
+    app: {{ .Values.slowtom_sf.name }} 
+spec:
+  replicas: {{ .Values.slowtom_sf.replicaCount }} 
+  selector: 
+    matchLabels:
+      app: {{ .Values.slowtom_sf.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.slowtom_sf.name }}
+        visualize: "true" 
+    spec:
+      dnsPolicy: ClusterFirstWithHostNet
+      containers: 
+        - name: {{ .Values.slowtom_sf.name }} 
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          command: ["/usr/local/tomcat/bin/slowcatalina.sh"]
+          args: ["whatever"]
+          env:
+{{ toYaml .Values.env | indent 12 }}
+{{ toYaml .Values.slowtom_sf.aspect_values | indent 12 }}
+          ports:
+          - containerPort: 8080
+            name: http
+            nodePort: 39001
+          resources: 
+{{ toYaml .Values.resources | indent 12 }}
+---
