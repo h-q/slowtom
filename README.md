@@ -10,7 +10,7 @@ helm install https://github.com/h-q/slowtom/raw/master/docs/slowtom.tgz --name s
 ### Helm2 Upgrade
 ```
 helm upgrade --debug --dry-run slowtom https://github.com/h-q/slowtom/raw/master/docs/slowtom.tgz \
-     -f https://raw.githubusercontent.com/h-q/slowtom/master/docs/slowtom/environments/initial.yaml
+     -f https://raw.githubusercontent.com/h-q/slowtom/master/docs/slowtom/environments/upgrade.yaml
 ```
 
 ### Helm2 Delete
